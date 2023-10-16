@@ -3,6 +3,7 @@
 import React from "react"
 import styled from "styled-components"
 import { AnimationContext } from "../Loading.context";
+import Spacer from "../../Spacer";
 
 /**
  * Button styled-component
@@ -158,7 +159,7 @@ const Wave = styled.div<{ $size: number, $deg: string, $isClick: boolean }>`
             opacity: .6;
         }
         30% {
-            transform: scale(1.03);
+            transform: scale(1.3);
             opacity: .5;
         }
         60%{
@@ -187,7 +188,8 @@ export default function Button() {
         ctx?.setter(isClick);
     }, [isClick])
 
-    return (
+    return (<>
+        <Spacer axis="vertical" size={16} />
         <RootContainer>
             <Btn
                 aria-pressed={true}
@@ -209,5 +211,5 @@ export default function Button() {
                 </ButtonBorder>
             </Btn>
         </RootContainer>
-    )
+    </>)
 }
