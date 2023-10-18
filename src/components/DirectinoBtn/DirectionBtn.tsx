@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { navigationStories } from "./DirectionBtn.helper"
-import React from "react"
 
 /**
  * Type declaration

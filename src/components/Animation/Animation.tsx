@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import CloudAnime from "./CloudAnime";
 import FlyingBirdAnime from "./FlyingBirdAnime";
-import React from "react";
 
 const LoadingContainer = styled.div`
     grid-area: loading;
