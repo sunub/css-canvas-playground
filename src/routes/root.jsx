@@ -48,6 +48,7 @@ function App() {
 	const Links = [
 		{ href: "/tree", name: "Tree" },
 		{ href: "/stories", name: "Stories" },
+		{ href: "/background", name: "background" },
 	];
 
 	return (

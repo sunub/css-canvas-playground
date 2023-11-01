@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Tree from "./routes/Tree";
 import Stories from "./routes/Stories";
+import Background from './routes/Background';
 
 const router = createBrowserRouter([
 	{
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
 	{
 		path: "/stories",
 		element: <Stories />,
+	},
+	{
+		path: "/background",
+		element: <Background />,
 	},
 ]);
 
