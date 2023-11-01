@@ -14,8 +14,6 @@ class Canvas {
 
       this.updatePositionX(this.stageWidth);
       this.create();
-
-      window.requestAnimationFrame(this.draw.bind(this));
     }
   }
 

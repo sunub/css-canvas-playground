@@ -16,6 +16,7 @@ function CanvasComponent() {
 
 	useEffect(() => {
 		const canvasClass = new Canvas(ref.current);
+		canvasClass.draw();
 	}, [])
 
 	return (
