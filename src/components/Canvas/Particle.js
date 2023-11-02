@@ -2,13 +2,13 @@ export class Particle {
   constructor(color, x){
       this.color = color;
       this.x = x;
-      this.fixedY = 0;
+      this.fixedY = -80;
       this.speedY = 2;
-      this.positionY = 0;
+      this.positionY = this.fixedY;
       this.gravity = Math.random() * 0.3;
   }
 
-  animate(ctx, stageHeight){
+  animate(ctx, stageWidth, stageHeight){
       this.speedY += this.gravity;
 
       this.positionY += this.speedY;
@@ -19,8 +19,9 @@ export class Particle {
       ctx.fill();
 
       if(this.positionY > stageHeight){
-          this.positionY = 0;
+          this.positionY = this.fixedY;
           this.speedY -= 10;
       }
+      ctx.closePath();
   }
 }   
