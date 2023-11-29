@@ -5,29 +5,34 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Tree from "./routes/Tree";
 import Stories from "./routes/Stories";
-import Background from './routes/Background';
+import Background from "./routes/Background";
+import Keyboard from "./routes/Keyboard";
 
 const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <Root />,
-	},
-	{
-		path: "/tree",
-		element: <Tree />,
-	},
-	{
-		path: "/stories",
-		element: <Stories />,
-	},
-	{
-		path: "/background",
-		element: <Background />,
-	},
+  {
+    path: "/",
+    element: <Root />,
+  },
+  {
+    path: "/tree",
+    element: <Tree />,
+  },
+  {
+    path: "/stories",
+    element: <Stories />,
+  },
+  {
+    path: "/background",
+    element: <Background />,
+  },
+  {
+    path: "/keyboard",
+    element: <Keyboard />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-	<React.StrictMode>
-		<RouterProvider router={router} />
-	</React.StrictMode>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
