@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import KeyboardHeader from "./KeyboardHeader";
+import VKBoxHeader from "./VKBoxHeader";
 
 const Background = styled.div`
   width: 100%;
@@ -14,29 +14,21 @@ const Layout = styled.div`
   background-color: whitesmoke;
 `;
 
-function VirtualKeyboard() {
-  const keyboardRef = React.useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const keyboard = keyboardRef.current;
-
-    if (!keyboard) return;
-  }, []);
-
+function VKBox() {
   return (
     <Background>
       <Layout
-        ref={keyboardRef}
+        id="vk-box"
         style={{
           userSelect: "none",
           top: `${document.body.clientHeight - 233}px`,
           left: `${document.body.clientWidth - 495}px`,
         }}
       >
-        <KeyboardHeader keyboardRef={keyboardRef} />
+        <VKBoxHeader />
       </Layout>
     </Background>
   );
 }
 
-export default VirtualKeyboard;
+export default VKBox;

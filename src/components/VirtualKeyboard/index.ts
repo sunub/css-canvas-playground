@@ -1,2 +1,2 @@
-export * from "./VirtualKeyboard";
-export { default } from "./VirtualKeyboard";
+export * from "./VKBox";
+export { default } from "./VKBox";

@@ -1,7 +1,7 @@
-import VirtualKeyboard from "../components/VirtualKeyboard";
+import VKBox from "../components/VirtualKeyboard/VKBox";
 
 function Keyboard() {
-  return <VirtualKeyboard />;
+  return <VKBox />;
 }
 
 export default Keyboard;
