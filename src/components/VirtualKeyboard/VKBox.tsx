@@ -11,21 +11,56 @@ const Layout = styled.div`
   position: fixed;
   width: 495px;
   height: 233px;
-  background-color: whitesmoke;
+  background-color: black;
+
+  padding: 10px;
+  border: 1px solid #ffffff;
 `;
 
 function VKBox() {
+  const [isMouseDown, setIsMouseDown] = React.useState(false);
+  const [clientWidth, setClientWidth] = React.useState(
+    document.body.clientWidth
+  );
+  const [clientHeight, setClientHeight] = React.useState(
+    document.body.clientHeight
+  );
+
+  React.useEffect(() => {
+    window.addEventListener("resize", () => {
+      setClientWidth(document.body.clientWidth);
+      setClientHeight(document.body.clientHeight);
+    });
+
+    return window.removeEventListener("resize", () => {
+      setClientWidth(document.body.clientWidth);
+      setClientHeight(document.body.clientHeight);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    if (isMouseDown) {
+      window.addEventListener("mouseup", () => setIsMouseDown(false));
+      return () =>
+        window.removeEventListener("mouseup", () => setIsMouseDown(false));
+    }
+  }, [isMouseDown]);
+
   return (
     <Background>
       <Layout
         id="vk-box"
         style={{
           userSelect: "none",
-          top: `${document.body.clientHeight - 233}px`,
-          left: `${document.body.clientWidth - 495}px`,
+          top: `${clientHeight - 233}px`,
+          left: `${clientWidth - 495}px`,
         }}
+        tabIndex={-1}
       >
-        <VKBoxHeader />
+        <VKBoxHeader
+          isMouseDown={isMouseDown}
+          setIsMouseDown={setIsMouseDown}
+        />
       </Layout>
     </Background>
   );
