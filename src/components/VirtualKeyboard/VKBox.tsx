@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import VKBoxHeader from "./VKBoxHeader";
+import VKBoxBody from "./VKBoxBody";
 
 const Background = styled.div`
   width: 100%;
@@ -11,25 +12,25 @@ const Layout = styled.div`
   position: fixed;
   width: 495px;
   height: 233px;
-  background-color: black;
+
+  display: flex;
+  flex-direction: column;
 
   padding: 10px;
   border: 1px solid #ffffff;
+  background-color: oklch(100% 0 0);
 `;
 
 function VKBox() {
   const [isMouseDown, setIsMouseDown] = React.useState(false);
-  const [clientWidth, setClientWidth] = React.useState(
-    document.body.clientWidth
-  );
-  const [clientHeight, setClientHeight] = React.useState(
-    document.body.clientHeight
+  const [position, setPosition] = React.useState(
+    document.body.getBoundingClientRect()
   );
 
   React.useEffect(() => {
     function handleResize() {
-      setClientWidth(document.body.clientWidth);
-      setClientHeight(document.body.clientHeight);
+      const newPosition = document.body.getBoundingClientRect();
+      setPosition(newPosition);
     }
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -50,8 +51,8 @@ function VKBox() {
         id="vk-box"
         style={{
           userSelect: "none",
-          top: `${clientHeight - 233}px`,
-          left: `${clientWidth - 495}px`,
+          top: `${position.height - 233}px`,
+          left: `${position.width - 495}px`,
         }}
         tabIndex={-1}
       >
@@ -59,6 +60,7 @@ function VKBox() {
           isMouseDown={isMouseDown}
           setIsMouseDown={setIsMouseDown}
         />
+        <VKBoxBody />
       </Layout>
     </Background>
   );

@@ -66,7 +66,9 @@ function VKBoxHeader({
       <div>
         <span>keyboard</span>
       </div>
-      <button>X</button>
+      <button>
+        <span className="material-icons">close</span>
+      </button>
     </Wrapper>
   );
 }
