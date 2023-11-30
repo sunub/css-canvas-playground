@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import VkRow from "../VkRow";
-import { DeleteKey, ChangeKey, ShiftKey, BlankKey } from "../SpecialKeys";
+import { DeleteKey, ChangeKey, ShiftKey } from "../SpecialKeys";
 import KEYBOARD_LAYOUT from "../KeyboardKeys";
 
 const style: React.CSSProperties = { whiteSpace: "nowrap", userSelect: "none" };
@@ -49,7 +49,7 @@ function VKBoxBody() {
       rightKeys: null,
     },
     {
-      leftKeys: <ChangeKey />,
+      leftKeys: <ChangeKey setIsKorean={setIsKorean} />,
       mainKeys: {
         keyLayout: KEYBOARD_LAYOUT[2],
         isKorean: isKorean,
@@ -58,13 +58,13 @@ function VKBoxBody() {
       rightKeys: null,
     },
     {
-      leftKeys: <ShiftKey />,
+      leftKeys: <ShiftKey setIsShift={setIsShift} />,
       mainKeys: {
         keyLayout: KEYBOARD_LAYOUT[3],
         isKorean: isKorean,
         isShift: isShift,
       },
-      rightKeys: <ShiftKey />,
+      rightKeys: <ShiftKey setIsShift={setIsShift} />,
     },
   ];
 

@@ -126,12 +126,4 @@ const KEYBOARD_LAYOUT: KeyboardLayoutType[] = [
   },
 ];
 
-const SPECIAL_KEYS = [
-  { key: "Change", id: "K20" },
-  { key: "shiftKey", id: "K16" },
-];
-
 export default KEYBOARD_LAYOUT;
-
-// functionKey: { key: "shiftKey", id: "K16" },
-// functionKey: { key: "Change", id: "K20" },
