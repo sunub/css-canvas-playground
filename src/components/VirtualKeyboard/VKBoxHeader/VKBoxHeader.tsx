@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { getCursorBasePosition } from "../VKBox.helper";
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,24 +32,17 @@ function VKBoxHeader({
       const moveX = position.cursorX - e.clientX;
       const moveY = position.cursorY - e.clientY;
 
-      const nextPositionX = position.boxX - moveX;
-      const nextPositionY = position.boxY - moveY;
+      const nextPositionX = Math.min(
+        Math.max(position.boxX - moveX, 0),
+        document.body.clientWidth - 495
+      );
+      const nextPositionY = Math.min(
+        Math.max(position.boxY - moveY, 0),
+        document.body.clientHeight - 233
+      );
 
-      if (nextPositionX < 0) {
-        keyboard.style.left = `${0}px`;
-      } else if (nextPositionX > document.body.clientWidth - 495) {
-        keyboard.style.left = `${document.body.clientWidth - 495}px`;
-      } else {
-        keyboard.style.left = `${nextPositionX}px`;
-      }
-
-      if (nextPositionY < 0) {
-        keyboard.style.top = `${0}px`;
-      } else if (nextPositionY > document.body.clientHeight - 233) {
-        keyboard.style.top = `${document.body.clientHeight - 233}px`;
-      } else {
-        keyboard.style.top = `${nextPositionY}px`;
-      }
+      keyboard.style.left = `${nextPositionX}px`;
+      keyboard.style.top = `${nextPositionY}px`;
     }
 
     if (isMouseDown) {
@@ -64,21 +58,8 @@ function VKBoxHeader({
       dir="ltr"
       style={style}
       onMouseDown={(e) => {
-        const keyboard = document.getElementById("vk-box")!;
-        const startX = e.clientX;
-        const startY = e.clientY;
-
-        const boxPosition = keyboard.getBoundingClientRect();
-        const boxStartX = boxPosition.x;
-        const boxStartY = boxPosition.y;
-
-        setPosition((prev) => ({
-          ...prev,
-          cursorX: startX,
-          cursorY: startY,
-          boxX: boxStartX,
-          boxY: boxStartY,
-        }));
+        const newPosition = getCursorBasePosition(e);
+        setPosition(newPosition);
         setIsMouseDown(true);
       }}
     >

@@ -27,22 +27,20 @@ function VKBox() {
   );
 
   React.useEffect(() => {
-    window.addEventListener("resize", () => {
+    function handleResize() {
       setClientWidth(document.body.clientWidth);
       setClientHeight(document.body.clientHeight);
-    });
-
-    return window.removeEventListener("resize", () => {
-      setClientWidth(document.body.clientWidth);
-      setClientHeight(document.body.clientHeight);
-    });
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   React.useEffect(() => {
+    const mouseDownHandler = () => setIsMouseDown(false);
+
     if (isMouseDown) {
-      window.addEventListener("mouseup", () => setIsMouseDown(false));
-      return () =>
-        window.removeEventListener("mouseup", () => setIsMouseDown(false));
+      window.addEventListener("mouseup", mouseDownHandler);
+      return () => window.removeEventListener("mouseup", mouseDownHandler);
     }
   }, [isMouseDown]);
 
