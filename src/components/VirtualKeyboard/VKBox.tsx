@@ -3,11 +3,6 @@ import styled from "styled-components";
 import VKBoxHeader from "./VKBoxHeader";
 import VKBoxBody from "./VKBoxBody";
 
-const Background = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-
 const Layout = styled.div`
   position: fixed;
   width: 495px;
@@ -17,8 +12,12 @@ const Layout = styled.div`
   flex-direction: column;
 
   padding: 10px;
-  border: 1px solid #ffffff;
-  background-color: oklch(100% 0 0);
+  border: 1px solid oklch(14.52% 0.02 0 / 18%);
+  border-radius: 10px;
+  background-color: oklch(98.05% 0 294.47 / 40%);
+  box-shadow: 0.5px 4.5px 3.6px oklch(0% 0 0 / 2.4%),
+    1.5px 12.5px 10px oklch(0% 0 0 / 3.5%),
+    3.6px 30.1px 24.1px oklch(0% 0 0 / 4.6%), 12px 100px 80px oklch(0% 0 0 / 7%);
 `;
 
 function VKBox() {
@@ -46,23 +45,18 @@ function VKBox() {
   }, [isMouseDown]);
 
   return (
-    <Background>
-      <Layout
-        id="vk-box"
-        style={{
-          userSelect: "none",
-          top: `${position.height - 233}px`,
-          left: `${position.width - 495}px`,
-        }}
-        tabIndex={-1}
-      >
-        <VKBoxHeader
-          isMouseDown={isMouseDown}
-          setIsMouseDown={setIsMouseDown}
-        />
-        <VKBoxBody />
-      </Layout>
-    </Background>
+    <Layout
+      id="vk-box"
+      style={{
+        userSelect: "none",
+        top: `${position.height - 233}px`,
+        left: `${position.width - 495}px`,
+      }}
+      tabIndex={-1}
+    >
+      <VKBoxHeader isMouseDown={isMouseDown} setIsMouseDown={setIsMouseDown} />
+      <VKBoxBody />
+    </Layout>
   );
 }
 
