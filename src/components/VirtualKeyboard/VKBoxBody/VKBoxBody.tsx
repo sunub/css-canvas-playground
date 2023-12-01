@@ -35,9 +35,14 @@ function KeyRow({ leftKeys, mainKeys, rightKeys }) {
   );
 }
 
-function VKBoxBody() {
+function VKBoxBody({
+  inputRef,
+}: {
+  inputRef: React.RefObject<HTMLInputElement>;
+}) {
   const [isShift, setIsShift] = React.useState(false);
   const [isKorean, setIsKorean] = React.useState(true);
+  const [isFocusInput, setIsFocusInput] = React.useState(false);
 
   const rowConfigs = [
     {

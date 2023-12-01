@@ -20,7 +20,7 @@ const Layout = styled.div`
     3.6px 30.1px 24.1px oklch(0% 0 0 / 4.6%), 12px 100px 80px oklch(0% 0 0 / 7%);
 `;
 
-function VKBox() {
+function VKBox({ inputRef }: { inputRef: React.RefObject<HTMLInputElement> }) {
   const [isMouseDown, setIsMouseDown] = React.useState(false);
   const [position, setPosition] = React.useState(
     document.body.getBoundingClientRect()
@@ -55,7 +55,7 @@ function VKBox() {
       tabIndex={-1}
     >
       <VKBoxHeader isMouseDown={isMouseDown} setIsMouseDown={setIsMouseDown} />
-      <VKBoxBody />
+      <VKBoxBody inputRef={inputRef} />
     </Layout>
   );
 }

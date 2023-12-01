@@ -19,6 +19,7 @@
     "react-router-dom": "^6.17.0",
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.0",
+    "typescript-plugin-css-modules": "^5.0.2",
     "unsplash-js": "^7.0.18"
   },
   "devDependencies": {

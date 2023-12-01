@@ -2,6 +2,7 @@ import React from "react";
 import VKBox from "../components/VirtualKeyboard/VKBox";
 import styled from "styled-components";
 import Input from "../components/Input";
+import InputProvider from "../components/InputProvider/InputProvider";
 
 const Background = styled.div`
   display: flex;
@@ -19,10 +20,12 @@ function Keyboard() {
 
   return (
     <Background>
-      <VKBox />
-      <Input>
-        <Input.TextField ref={inputRef} />
-      </Input>
+      <InputProvider>
+        <VKBox inputRef={inputRef} />
+        <Input>
+          <Input.TextField ref={inputRef} />
+        </Input>
+      </InputProvider>
     </Background>
   );
 }
