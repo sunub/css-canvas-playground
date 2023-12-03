@@ -10,6 +10,17 @@ import {
 } from "../SpecialKeys";
 import KEYBOARD_LAYOUT from "../KeyboardKeys";
 
+type RowConfig = {
+  leftKeys: React.ReactNode | null;
+  mainKeys: {
+    keyLayout: any;
+    isKorean: boolean;
+    isShift: boolean;
+    justify: string;
+  };
+  rightKeys: React.ReactNode | null;
+};
+
 const style: React.CSSProperties = { whiteSpace: "nowrap", userSelect: "none" };
 
 const Wrapper = styled.div.attrs({
@@ -21,7 +32,15 @@ const Row = styled.div.attrs({ style: style })<{ $justify?: string }>`
   justify-content: ${(props) => props.$justify};
 `;
 
-function KeyRow({ leftKeys, mainKeys, rightKeys }) {
+function KeyRow({
+  rowConfig,
+  inputRef,
+}: {
+  rowConfig: RowConfig;
+  inputRef: React.RefObject<HTMLInputElement>;
+}) {
+  const { leftKeys, mainKeys, rightKeys } = rowConfig;
+
   return (
     <Row $justify={mainKeys.justify}>
       {leftKeys}
@@ -29,6 +48,7 @@ function KeyRow({ leftKeys, mainKeys, rightKeys }) {
         keyLayout={mainKeys.keyLayout}
         isKorean={mainKeys.isKorean}
         isShift={mainKeys.isShift}
+        inputRef={inputRef}
       />
       {rightKeys}
     </Row>
@@ -42,9 +62,8 @@ function VKBoxBody({
 }) {
   const [isShift, setIsShift] = React.useState(false);
   const [isKorean, setIsKorean] = React.useState(true);
-  const [isFocusInput, setIsFocusInput] = React.useState(false);
 
-  const rowConfigs = [
+  const rowConfigs: RowConfig[] = [
     {
       leftKeys: null,
       mainKeys: {
@@ -93,12 +112,11 @@ function VKBoxBody({
 
   return (
     <Wrapper dir="ltr">
-      {rowConfigs.map(({ leftKeys, mainKeys, rightKeys }) => (
+      {rowConfigs.map((rowConfig) => (
         <KeyRow
           key={crypto.randomUUID()}
-          leftKeys={leftKeys}
-          mainKeys={mainKeys}
-          rightKeys={rightKeys}
+          rowConfig={rowConfig}
+          inputRef={inputRef}
         />
       ))}
       <Row>

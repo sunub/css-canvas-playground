@@ -1,8 +1,10 @@
 import React from "react";
-import VKBox from "../components/VirtualKeyboard/VKBox";
 import styled from "styled-components";
 import Input from "../components/Input";
 import InputProvider from "../components/InputProvider/InputProvider";
+import VKBox from "../components/VirtualKeyboard/VKBox";
+import VKBoxHeader from "../components/VirtualKeyboard/VKBoxHeader";
+import VKBoxBody from "../components/VirtualKeyboard/VKBoxBody";
 
 const Background = styled.div`
   display: flex;
@@ -18,15 +20,37 @@ const Background = styled.div`
 function Keyboard() {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
+  React.useEffect(() => {
+    function handleOpenKeyboard() {
+      const vkBox = document.getElementById("vk-box") as HTMLDivElement;
+
+      if (vkBox) {
+        vkBox.style.display = "inline-block";
+      }
+    }
+
+    const vkOpenBtn = document.querySelector(".vk-open-btn");
+    vkOpenBtn?.addEventListener("click", handleOpenKeyboard);
+
+    return () => {
+      vkOpenBtn?.removeEventListener("click", handleOpenKeyboard);
+    };
+  }, []);
+
   return (
-    <Background>
-      <InputProvider>
-        <VKBox inputRef={inputRef} />
-        <Input>
-          <Input.TextField ref={inputRef} />
-        </Input>
-      </InputProvider>
-    </Background>
+    <>
+      <Background>
+        <InputProvider>
+          <Input>
+            <Input.TextField ref={inputRef} />
+          </Input>
+        </InputProvider>
+        <VKBox>
+          <VKBoxHeader inputRef={inputRef} />
+          <VKBoxBody inputRef={inputRef} />
+        </VKBox>
+      </Background>
+    </>
   );
 }
 

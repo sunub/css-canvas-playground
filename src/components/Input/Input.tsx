@@ -1,7 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { InputContext } from "../InputProvider/InputProvider";
 
-const Form = styled.form``;
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const KeyboardIcon = styled.span`
+  cursor: pointer;
+`;
 
 function Input({
   children,
@@ -11,24 +19,37 @@ function Input({
   bottomText?: string | null;
 }) {
   return (
-    <Form>
-      <search style={{ display: "flex", flexDirection: "column" }}>
+    <form>
+      <search>
         <label htmlFor="search-input-text-field">검색창</label>
-        {children}
+        <InputWrapper>
+          {children}
+          <KeyboardIcon
+            style={{ userSelect: "none" }}
+            className="material-icons vk-open-btn"
+            onClick={() =>
+              document.getElementById("search-input-text-field")?.focus()
+            }
+          >
+            keyboard
+          </KeyboardIcon>
+        </InputWrapper>
         {bottomText !== null ? <p>{bottomText}</p> : null}
       </search>
-    </Form>
+    </form>
   );
 }
 
 Input.TextField = React.forwardRef<HTMLInputElement>((props, ref) => {
   const [value, setValue] = React.useState("");
+  const [_, setIsInputFocused] = React.useContext(InputContext);
 
   return (
     <input
       ref={ref}
       id="search-input-text-field"
       type={"search"}
+      onBlur={() => setIsInputFocused(false)}
       onChange={(e) => setValue(e.target.value)}
       onKeyDown={(e) => {
         if (e.key === "Escape") {
@@ -37,6 +58,7 @@ Input.TextField = React.forwardRef<HTMLInputElement>((props, ref) => {
         }
       }}
       value={value}
+      {...props}
     />
   );
 });
