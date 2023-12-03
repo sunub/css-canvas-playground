@@ -72,7 +72,7 @@ function VKBoxBody({
         isShift: isShift,
         justify: "center",
       },
-      rightKeys: <DeleteKey />,
+      rightKeys: <DeleteKey inputRef={inputRef} />,
     },
     {
       leftKeys: null,
@@ -121,7 +121,7 @@ function VKBoxBody({
       ))}
       <Row>
         <CtrlAltKey />
-        <SpaceKey />
+        <SpaceKey inputRef={inputRef} />
         <CtrlAltKey />
       </Row>
     </Wrapper>

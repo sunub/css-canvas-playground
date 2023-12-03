@@ -47,8 +47,8 @@ function VKRow({
     const span = target.querySelector("span");
     const btnValue = span?.textContent;
 
-    inputRef.current.focus();
     inputRef.current.value += btnValue;
+    inputRef.current.focus();
   }
 
   return (
@@ -67,7 +67,13 @@ function VKRow({
         ))}
       {Array.isArray(keyLayout.special) &&
         keyLayout.special.map(({ key, shiftKey, id }) => (
-          <button key={id} className={"vk-btn"} id={id} type={"button"}>
+          <button
+            key={id}
+            className={"vk-btn"}
+            id={id}
+            type={"button"}
+            onClick={(e) => handleButtonClick(e)}
+          >
             <Key>{isShift && shiftKey ? shiftKey : key}</Key>
           </button>
         ))}
