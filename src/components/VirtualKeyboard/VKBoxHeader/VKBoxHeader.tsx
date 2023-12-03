@@ -12,12 +12,11 @@ const Wrapper = styled.div`
 const style: React.CSSProperties = { whiteSpace: "nowrap", userSelect: "none" };
 
 function VKBoxHeader({
-  isMouseDown,
-  setIsMouseDown,
+  inputRef,
 }: {
-  isMouseDown: boolean;
-  setIsMouseDown: React.Dispatch<React.SetStateAction<boolean>>;
+  inputRef: React.RefObject<HTMLInputElement>;
 }) {
+  const [isMouseDown, setIsMouseDown] = React.useState(false);
   const [position, setPosition] = React.useState({
     cursorX: 0,
     cursorY: 0,
@@ -26,7 +25,18 @@ function VKBoxHeader({
   });
 
   React.useEffect(() => {
+    const mouseDownHandler = () => setIsMouseDown(false);
+
+    if (isMouseDown) {
+      window.addEventListener("mouseup", mouseDownHandler);
+      return () => window.removeEventListener("mouseup", mouseDownHandler);
+    }
+  }, [isMouseDown]);
+
+  React.useEffect(() => {
     function handleMouseMove(e: MouseEvent) {
+      if (inputRef.current) inputRef.current.focus();
+
       const keyboard = document.getElementById("vk-box")!;
 
       const moveX = position.cursorX - e.clientX;
@@ -51,7 +61,7 @@ function VKBoxHeader({
         window.removeEventListener("mousemove", handleMouseMove);
       };
     }
-  }, [isMouseDown, position]);
+  }, [isMouseDown, position, inputRef]);
 
   return (
     <Wrapper
@@ -66,7 +76,12 @@ function VKBoxHeader({
       <div>
         <span>keyboard</span>
       </div>
-      <button>
+      <button
+        onClick={() => {
+          const vkBox = document.getElementById("vk-box") as HTMLDivElement;
+          vkBox.style.display = "none";
+        }}
+      >
         <span className="material-icons">close</span>
       </button>
     </Wrapper>

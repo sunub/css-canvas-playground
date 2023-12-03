@@ -1,3 +1,4 @@
+import React, { Ref } from "react";
 import styled from "styled-components";
 
 const Keycap = styled.button.attrs({ type: "button" })`
@@ -47,9 +48,23 @@ const SpeicalKey = styled.span<{
   background-size: 54px ${(props) => props.$sizeY}px;
 `;
 
-function DeleteKey({ ...delegated }) {
+function DeleteKey({
+  inputRef,
+  ...delegated
+}: {
+  inputRef: React.RefObject<HTMLInputElement>;
+}) {
   return (
-    <Keycap id={"K46"} {...delegated} style={{ width: "62px" }}>
+    <Keycap
+      id={"K46"}
+      {...delegated}
+      style={{ width: "62px" }}
+      onClick={() => {
+        if (!inputRef.current) return;
+        inputRef.current.value = inputRef.current.value.slice(0, -1);
+        inputRef.current.focus();
+      }}
+    >
       <SpeicalKey
         style={{ backgroundSize: "62px 256px" }}
         $width={22}
@@ -104,9 +119,23 @@ function BlankKey({ ...delegated }) {
   );
 }
 
-function SpaceKey({ ...delegated }) {
+function SpaceKey({
+  inputRef,
+  ...delegated
+}: {
+  inputRef: React.RefObject<HTMLInputElement>;
+}) {
   return (
-    <Keycap id={"K32"} {...delegated} style={{ width: "293px" }}>
+    <Keycap
+      id={"K32"}
+      {...delegated}
+      style={{ width: "293px" }}
+      onClick={() => {
+        if (!inputRef.current) return;
+        inputRef.current.value += " ";
+        inputRef.current.focus();
+      }}
+    >
       <span style={{ visibility: "hidden" }}>.</span>
     </Keycap>
   );
