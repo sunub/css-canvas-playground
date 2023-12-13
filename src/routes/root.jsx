@@ -50,6 +50,7 @@ function App() {
     { href: "/stories", name: "Stories" },
     { href: "/background", name: "background" },
     { href: "/keyboard", name: "keyboard" },
+    { href: "/form", name: "form" },
   ];
 
   return (

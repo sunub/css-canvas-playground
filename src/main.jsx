@@ -7,6 +7,7 @@ import Tree from "./routes/Tree";
 import Stories from "./routes/Stories";
 import Background from "./routes/Background";
 import Keyboard from "./routes/Keyboard";
+import FormPage from "./routes/Form";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/keyboard",
     element: <Keyboard />,
+  },
+  {
+    path: "/form",
+    element: <FormPage />,
   },
 ]);
 
