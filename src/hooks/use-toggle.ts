@@ -1,6 +1,8 @@
 import React from "react";
 
-function useToggle(initialValue = false) {
+type UseToggle = [boolean, () => void];
+
+function useToggle(initialValue = false): UseToggle {
   if (typeof initialValue !== "boolean") {
     console.warn("Invalid type for useToggle");
   }

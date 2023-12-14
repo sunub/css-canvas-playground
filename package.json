@@ -18,6 +18,7 @@
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.11",
     "react-focus-lock": "^2.9.6",
+    "react-remove-scroll": "^2.5.7",
     "react-router-dom": "^6.17.0",
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.0",

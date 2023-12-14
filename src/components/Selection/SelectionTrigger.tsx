@@ -1,19 +1,20 @@
 import React from "react";
 import * as Styled from "./Selection.styled";
-import { SelectionContext } from "./SelectionProvider";
 
 type TriggerProps = {
   name: string;
+  isOpen: boolean;
+  setter: () => void;
 };
 
 const SelectionTrigger = React.forwardRef<HTMLButtonElement, TriggerProps>(
   (props, ref: React.ForwardedRef<HTMLButtonElement>) => {
-    const { value, setter } = React.useContext(SelectionContext);
+    const { isOpen, setter } = props;
 
     return (
-      <Styled.Button ref={ref} onClick={setter} $isModalOpen={value}>
+      <Styled.Button ref={ref} onClick={() => setter()} $isModalOpen={isOpen}>
         <span>{props.name}</span>
-        <Arrow isModalOpen={value} />
+        <Arrow isModalOpen={isOpen} />
       </Styled.Button>
     );
   }
