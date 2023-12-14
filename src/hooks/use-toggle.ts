@@ -7,7 +7,7 @@ function useToggle(initialValue = false) {
 
   const [value, setValue] = React.useState(initialValue);
 
-  const toggleValue: any = React.useCallback(() => {
+  const toggleValue = React.useCallback(() => {
     setValue((currentValue) => !currentValue);
   }, []);
 
