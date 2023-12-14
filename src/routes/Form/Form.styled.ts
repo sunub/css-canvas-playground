@@ -16,13 +16,14 @@ const Button = styled.button<{ $isModalOpen: boolean }>`
 
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
 
   cursor: pointer;
   padding: 16px;
   background-color: oklch(65.57% 0.19552898037793698 288.17775174927874);
-  border-radius: 16px 16px ${(props) => (props.$isModalOpen ? 0 : 16)}px
-    ${(props) => (props.$isModalOpen ? 0 : 16)}px;
+  border-radius: 24px 24px ${(props) => (props.$isModalOpen ? 0 : 24)}px
+    ${(props) => (props.$isModalOpen ? 0 : 24)}px;
   font-weight: 700;
 
   color: white;

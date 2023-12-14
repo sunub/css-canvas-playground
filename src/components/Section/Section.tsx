@@ -1,7 +1,20 @@
 import React from "react";
 import * as Styled from "./Section.styled";
 
-function Section({ target, items }: { target: HTMLElement; items: string[] }) {
+type Setter = {
+  toggle: () => void;
+  section: React.Dispatch<React.SetStateAction<number>>;
+};
+
+function Section({
+  target,
+  items,
+  setter,
+}: {
+  target: HTMLElement;
+  items: string[];
+  setter: Setter;
+}) {
   const [rect] = React.useState<DOMRect | null>(() => {
     return target.getBoundingClientRect();
   });
@@ -12,8 +25,18 @@ function Section({ target, items }: { target: HTMLElement; items: string[] }) {
       $left={rect ? rect.left : 0}
       $width={rect ? rect.width : 0}
     >
-      {items.map((item) => {
-        return <Styled.Item key={item}>{item}</Styled.Item>;
+      {items.map((item, i) => {
+        return (
+          <Styled.Item
+            key={item}
+            onClick={() => {
+              setter.toggle();
+              setter.section(() => i);
+            }}
+          >
+            {item}
+          </Styled.Item>
+        );
       })}
     </Styled.Wrapper>
   );

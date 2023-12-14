@@ -7,13 +7,19 @@ import React from "react";
 function FormPage() {
   const ref = React.useRef<HTMLButtonElement>(null);
   const [isModalOpen, toggleIsModalOpen] = useToggle(false);
+  const [currentSection, setCurrentSection] = React.useState(0);
   const SectionItems = [
+    "다이알로그",
     "로그인 폼",
     "아이디 찾기",
     "비밀번호 찾기",
     "주소 폼",
     "가입 폼",
   ];
+  const setter = {
+    toggle: toggleIsModalOpen,
+    section: setCurrentSection,
+  };
 
   return (
     <>
@@ -23,14 +29,14 @@ function FormPage() {
           onClick={toggleIsModalOpen}
           $isModalOpen={isModalOpen}
         >
-          <span>다이알로그</span>
+          <span>{SectionItems[currentSection]}</span>
           <Arrow isModalOpen={isModalOpen} />
         </Styled.Button>
       </Styled.FormWrapper>
       {isModalOpen &&
         ref.current &&
         createPortal(
-          <Section target={ref.current} items={SectionItems} />,
+          <Section target={ref.current} items={SectionItems} setter={setter} />,
           document.getElementById("select-root") as HTMLElement
         )}
     </>
