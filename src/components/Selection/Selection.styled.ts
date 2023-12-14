@@ -14,7 +14,7 @@ const Group = styled.div<{ $top?: number; $left?: number; $width?: number }>`
   color: white;
   padding: 8px;
 
-  border-radius: 16px;
+  border-radius: 0 0 16px 16px;
   box-shadow: 0px 2.8px 7.4px rgba(0, 0, 0, 0.042),
     0px 6.7px 17.8px rgba(0, 0, 0, 0.061),
     0px 12.5px 33.6px rgba(0, 0, 0, 0.075),
@@ -22,17 +22,24 @@ const Group = styled.div<{ $top?: number; $left?: number; $width?: number }>`
     0px 41.8px 112px rgba(0, 0, 0, 0.108), 0px 100px 268px rgba(0, 0, 0, 0.15);
 `;
 
-const Item = styled.span`
-  padding: 4px;
-  text-align: center;
+const ItemWrapper = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  gap: 8px;
 
   &:hover {
     background-color: oklch(77.54% 0.124 291.56);
     border-radius: 16px;
     color: black;
   }
+`;
+
+const Item = styled.span`
+  padding: 4px;
+  text-align: center;
+  transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
 `;
 
 const Button = styled.button<{ $isModalOpen: boolean }>`
@@ -62,4 +69,4 @@ const Svg = styled.svg<{ $isModalOpen: boolean }>`
   transition: all 350ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 `;
 
-export { Group, Item, Button, Svg };
+export { Group, Item, ItemWrapper, Button, Svg };

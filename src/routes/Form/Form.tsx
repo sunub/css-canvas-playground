@@ -1,9 +1,8 @@
 import * as Styled from "./Form.styled";
-import Selection from "@components/Section";
+import Selection from "@components/Selection";
 
 function FormPage() {
   const SectionItems = [
-    "다이알로그",
     "로그인 폼",
     "아이디 찾기",
     "비밀번호 찾기",

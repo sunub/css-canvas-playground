@@ -10,19 +10,20 @@ function Selection({ items }: { items: string[] }) {
 
   React.useEffect(() => {
     setRect(triggerRef.current?.getBoundingClientRect());
-  }, []);
+  }, [index]);
 
   return (
     <SelectionProvier>
       <SelectionTrigger name={items[index]} ref={triggerRef} />
       {rect && (
         <SelectionGroup rect={rect}>
-          {items.map((item, index) => {
+          {items.map((item, itemIndex) => {
             return (
               <SectionItem
                 key={item}
-                index={index}
-                item={items[index]}
+                index={itemIndex}
+                currIndex={index}
+                item={items[itemIndex]}
                 setIndex={setIndex}
               />
             );
