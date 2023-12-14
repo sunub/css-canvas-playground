@@ -1,6 +1,7 @@
 import Modal from "@components/Modal";
 import * as Styled from "./Form.styled";
 import Selection from "@components/Selection";
+import Select from "@components/Select";
 import React from "react";
 
 function FormPage() {
@@ -15,7 +16,7 @@ function FormPage() {
   console.log(SectionItems[index]);
   return (
     <Styled.FormWrapper>
-      <Selection items={SectionItems} index={index} setIndex={setIndex} />
+      <Select />
       <Modal />
     </Styled.FormWrapper>
   );
