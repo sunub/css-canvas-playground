@@ -5,6 +5,7 @@ import Select from "@components/Select";
 import React from "react";
 import useToggle from "@hooks/use-toggle";
 import Form from "@components/Form";
+import FormHeader from "@components/FormHeader";
 
 const SELECT_ITMES = [
   "로그인 폼",
@@ -30,6 +31,7 @@ function FormPage() {
       </div>
       {isModalOpen && (
         <Modal isModalOpen={isModalOpen} handleDismiss={toggleIsModalOpen}>
+          <FormHeader />
           <Form />
         </Modal>
       )}

@@ -71,22 +71,6 @@ a {
   touch-action: manipulation;
 }
 
-input:not([type]),
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea {
-  display: block;
-  width: 100%;
-  background-color: var(--color-core-bg);
-  color: var(--color-core-text);
-  border: 1px solid #d2d3d7;
-  font: inherit;
-  padding: 0.5em;
-  line-height: 1;
-  border-radius: 8px;
-}
-
 img,
 iframe {
   max-inline-size: 100%;

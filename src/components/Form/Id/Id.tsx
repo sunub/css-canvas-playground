@@ -22,7 +22,6 @@ function Id({
         id="id"
         type="text"
         name="id"
-        autoFocus={true}
         autoComplete={"email"}
         required
         aria-labelledby="insert-user-id"

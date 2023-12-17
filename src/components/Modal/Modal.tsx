@@ -17,7 +17,7 @@ function Modal({
   React.useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") {
-        modalRef.current?.addEventListener("animationend", handleDismiss);
+        handleDismiss();
       }
     }
 
