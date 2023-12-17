@@ -3,7 +3,6 @@ import * as Styled from "./Select.styled";
 function SelectItem({
   value,
   action,
-  toggleOpen,
 }: {
   value: string;
   action: (value: string) => void;

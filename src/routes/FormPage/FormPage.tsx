@@ -1,6 +1,5 @@
 import Modal from "@components/Modal";
 import * as Styled from "./FormPage.styled";
-import Selection from "@components/Selection";
 import Select from "@components/Select";
 import React from "react";
 import useToggle from "@hooks/use-toggle";
@@ -21,6 +20,8 @@ function FormPage() {
 
   function handleSelect(value: string) {
     setSelectedValue(() => value);
+
+    console.log(selectedValue);
   }
 
   return (

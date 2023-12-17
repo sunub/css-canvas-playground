@@ -10,6 +10,8 @@ function Form() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    console.log(id, password);
   }
   return (
     <form onSubmit={handleSubmit}>

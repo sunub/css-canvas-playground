@@ -4,7 +4,6 @@ import { RemoveScroll } from "react-remove-scroll";
 import * as Styled from "./Modal.styled";
 
 function Modal({
-  isModalOpen,
   handleDismiss,
   children,
 }: {

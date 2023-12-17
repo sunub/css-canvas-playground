@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const Form = styled.form``;
-
 const Button = styled.button`
   width: 100%;
   cursor: pointer;
