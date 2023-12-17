@@ -50,10 +50,6 @@ const Item = styled.span`
 `;
 
 const Button = styled.button<{ $isModalOpen: boolean }>`
-  position: absolute;
-  top: 50%;
-  left: calc(50% - 100px);
-
   display: inline-flex;
   align-items: center;
   justify-content: space-between;

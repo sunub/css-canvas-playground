@@ -15,6 +15,7 @@ const SELECT_ITMES = [
 
 function FormPage() {
   const [selectedValue, setSelectedValue] = React.useState<string>("");
+  const [isModalOpen, toggleIsModalOpen] = useToggle(false);
 
   function handleSelect(value: string) {
     setSelectedValue(() => value);
@@ -23,6 +24,9 @@ function FormPage() {
   return (
     <Styled.FormWrapper>
       <Select items={SELECT_ITMES} action={handleSelect} />
+      <div>
+        <Styled.Button onClick={toggleIsModalOpen}>Open Modal</Styled.Button>
+      </div>
       <Modal />
     </Styled.FormWrapper>
   );
