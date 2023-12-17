@@ -1,8 +1,22 @@
 import * as Styled from "./Select.styled";
 
-function SelectItem({ value }: { value: string }) {
+function SelectItem({
+  value,
+  action,
+  toggleOpen,
+}: {
+  value: string;
+  action: (value: string) => void;
+  toggleOpen: () => void;
+}) {
   return (
-    <Styled.ItemWrapper key={value} className={`select-item`}>
+    <Styled.ItemWrapper
+      key={value}
+      className={`select-item`}
+      onClick={() => {
+        action(value);
+      }}
+    >
       <Styled.Item>{value}</Styled.Item>
     </Styled.ItemWrapper>
   );

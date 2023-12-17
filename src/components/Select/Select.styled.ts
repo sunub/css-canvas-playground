@@ -8,18 +8,11 @@ const Group = styled.div<{ $top?: number; $left?: number; $width?: number }>`
 
   display: inline-flex;
   flex-direction: column;
-  gap: 8px;
 
   background: oklch(65.57% 0.19552898037793698 288.17775174927874);
   color: white;
-  padding: 8px;
 
   border-radius: 0 0 16px 16px;
-  box-shadow: 0px 2.8px 7.4px rgba(0, 0, 0, 0.042),
-    0px 6.7px 17.8px rgba(0, 0, 0, 0.061),
-    0px 12.5px 33.6px rgba(0, 0, 0, 0.075),
-    0px 22.3px 59.9px rgba(0, 0, 0, 0.089),
-    0px 41.8px 112px rgba(0, 0, 0, 0.108), 0px 100px 268px rgba(0, 0, 0, 0.15);
 `;
 
 const Content = styled.div`
@@ -33,12 +26,20 @@ const ItemWrapper = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  gap: 8px;
 
+  gap: 8px;
+  padding: 4px;
+  outline-offset: 4px;
   &:hover {
-    background-color: oklch(77.54% 0.124 291.56);
-    border-radius: 16px;
-    color: black;
+    & > span {
+      background: oklch(77.54% 0.124 291.56);
+      border-radius: 16px;
+      color: black;
+
+      padding-right: 16px;
+      padding-left: 16px;
+      transition: all 300ms ease;
+    }
   }
 `;
 

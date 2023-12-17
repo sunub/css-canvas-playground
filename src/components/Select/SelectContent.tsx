@@ -13,13 +13,13 @@ function SelectContent({
   const [host, setHost] = React.useState<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
-    const host = document.createElement("div");
-    document.body.appendChild(host);
-    host.setAttribute("id", "select-root-container");
+    const root = document.createElement("div");
+    document.body.appendChild(root);
+    root.setAttribute("id", "select-root-container");
 
-    setHost(host);
+    setHost(root);
 
-    return () => host.remove();
+    return () => root.remove();
   }, []);
 
   if (host == null) return null;

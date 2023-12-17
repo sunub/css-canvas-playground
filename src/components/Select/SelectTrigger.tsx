@@ -5,11 +5,17 @@ const SelectTrigger = React.forwardRef<
   HTMLButtonElement,
   {
     isOpen: boolean;
-    setOpen: () => void;
+    toggleOpen: () => void;
   }
->(({ isOpen, setOpen }, ref) => {
+>(({ isOpen, toggleOpen }, ref) => {
   return (
-    <Styled.Button ref={ref} $isModalOpen={isOpen} onClick={setOpen}>
+    <Styled.Button
+      ref={ref}
+      $isModalOpen={isOpen}
+      onClick={() => {
+        toggleOpen();
+      }}
+    >
       폼을 선택해주세요.
       <Styled.ArrowDownward className="material-icons" $isModalOpen={isOpen}>
         arrow_downward
