@@ -7,7 +7,7 @@ import Tree from "./routes/Tree";
 import Stories from "./routes/Stories";
 import Background from "./routes/Background";
 import Keyboard from "./routes/Keyboard";
-import FormPage from "./routes/Form";
+import FormPage from "./routes/FormPage";
 
 const router = createBrowserRouter([
   {

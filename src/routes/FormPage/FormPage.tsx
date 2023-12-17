@@ -1,5 +1,5 @@
 import Modal from "@components/Modal";
-import * as Styled from "./Form.styled";
+import * as Styled from "./FormPage.styled";
 import Selection from "@components/Selection";
 import Select from "@components/Select";
 import React from "react";
