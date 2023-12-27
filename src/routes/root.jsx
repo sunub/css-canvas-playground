@@ -51,6 +51,7 @@ function App() {
     { href: "/background", name: "background" },
     { href: "/keyboard", name: "keyboard" },
     { href: "/form", name: "form" },
+    { href: "/svg-page", name: "svgPage" },
   ];
 
   return (
