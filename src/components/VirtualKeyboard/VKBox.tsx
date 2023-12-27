@@ -18,11 +18,18 @@ const Layout = styled.div`
     3.6px 30.1px 24.1px oklch(0% 0 0 / 4.6%), 12px 100px 80px oklch(0% 0 0 / 7%);
 `;
 
-function VKBox({ children }: { children: React.ReactNode }) {
+function VKBox({
+  keyboardRef,
+  children,
+}: {
+  keyboardRef: React.RefObject<HTMLDivElement>;
+  children: React.ReactNode;
+}) {
   const bodySizeInfo = document.body.getBoundingClientRect();
   return (
     <Layout
       id="vk-box"
+      ref={keyboardRef}
       style={{
         display: "none",
         userSelect: "none",

@@ -7,6 +7,8 @@ import Tree from "./routes/Tree";
 import Stories from "./routes/Stories";
 import Background from "./routes/Background";
 import Keyboard from "./routes/Keyboard";
+import FormPage from "./routes/FormPage";
+import SvgPage from "./routes/SVG/SvgPage";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
   {
     path: "/keyboard",
     element: <Keyboard />,
+  },
+  {
+    path: "/form",
+    element: <FormPage />,
+  },
+  {
+    path: "/svg-page",
+    element: <SvgPage />,
   },
 ]);
 

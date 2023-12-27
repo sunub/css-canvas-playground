@@ -22,7 +22,6 @@ body,
 
 body {
   color: var(--color-text);
-  background: var(--default-bg-color);
   transition: color 350ms ease 0s, background 350ms ease 0s;
 
   overflow-y: scroll;
@@ -71,22 +70,6 @@ a {
   touch-action: manipulation;
 }
 
-input:not([type]),
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea {
-  display: block;
-  width: 100%;
-  background-color: var(--color-core-bg);
-  color: var(--color-core-text);
-  border: 1px solid #d2d3d7;
-  font: inherit;
-  padding: 0.5em;
-  line-height: 1;
-  border-radius: 8px;
-}
-
 img,
 iframe {
   max-inline-size: 100%;
@@ -111,11 +94,6 @@ iframe {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "liga";
-}
-
-button {
-  border: none;
-  background: transparent;
 }
 
 h1,
@@ -232,7 +210,7 @@ td {
   }
 }
 
-html {
+/* html {
   --scrollbar-width: 12px;
   --scrollbar-height: 12px;
   --scrollbar-background-color: oklch(92.54% 0.01 32.52);
@@ -266,4 +244,4 @@ html {
 
   --default-bg-color: oklch(97.14% 0.011 31.07);
   --card-content-bg-color: oklch(98.8% 0 31.07);
-}
+} */

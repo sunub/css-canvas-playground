@@ -19,14 +19,17 @@ const Background = styled.div`
 
 function Keyboard() {
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const keyboardRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    function handleOpenKeyboard() {
-      const vkBox = document.getElementById("vk-box") as HTMLDivElement;
+    if (!keyboardRef.current) return;
 
-      if (vkBox) {
-        vkBox.style.display = "inline-block";
-      }
+    function handleOpenKeyboard() {
+      const vkBox = keyboardRef.current;
+
+      if (!vkBox) return;
+      vkBox.style.display =
+        vkBox.style.display === "none" ? "inline-block" : "none";
     }
 
     const vkOpenBtn = document.querySelector(".vk-open-btn");
@@ -45,7 +48,7 @@ function Keyboard() {
             <Input.TextField ref={inputRef} />
           </Input>
         </InputProvider>
-        <VKBox>
+        <VKBox keyboardRef={keyboardRef}>
           <VKBoxHeader inputRef={inputRef} />
           <VKBoxBody inputRef={inputRef} />
         </VKBox>
