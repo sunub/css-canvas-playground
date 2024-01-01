@@ -52,6 +52,7 @@ function App() {
     { href: "/keyboard", name: "keyboard" },
     { href: "/form", name: "form" },
     { href: "/svg-page", name: "svgPage" },
+    { href: "/scroll-page", name: "scroll" },
   ];
 
   return (

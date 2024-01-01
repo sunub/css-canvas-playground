@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import DirectionBtn from "../components/DirectinoBtn"
+import DirectionBtn from "../components/DirectinoBtn";
 import Bird from "../icons/Bird";
 import { createApi } from "unsplash-js";
 import { Photos } from "unsplash-js/dist/methods/search/types/response";
@@ -17,94 +17,93 @@ import Articels from "../components/Articles";
  */
 
 const Container = styled.div`
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    justify-content: center;
-    align-items: center;
-`
+  justify-content: center;
+  align-items: center;
+`;
 const StoriesRoot = styled.div`
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
 
-    justify-content: center;
-    align-items: center;
-`
+  justify-content: center;
+  align-items: center;
+`;
 const StoriesContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
-    position: relative;
-    `
+  position: relative;
+`;
 
 const Content = styled.div`
-    display: grid;
+  display: grid;
 
-    grid: 1fr / auto-flow 100%;
+  grid: 1fr / auto-flow 100%;
 
-    overflow-x: scroll;
-    scroll-timeline: --time-line inline;
-    scroll-snap-type: x mandatory;
+  overflow-x: scroll;
+  scroll-timeline: --time-line inline;
+  scroll-snap-type: x mandatory;
 
-    max-width: 320px;
-    max-height: 620px;
-    box-shadow: var(--shadow-elevation-high);
+  max-width: 320px;
+  max-height: 620px;
+  box-shadow: var(--shadow-elevation-high);
 
-    ::-webkit-scrollbar {
-        width: 0px;
-        height: 0px;
-    }
-`
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+`;
 
 /**
  * React Components
  */
 
-
 export default function Stories() {
-    const [images, setImages] = React.useState<Photos | null>(null);
+  const [images, setImages] = React.useState<Photos | null>(null);
 
-    const unsplash = createApi({
-        accessKey: "T3_66syLWZsKMMOwHmHkoFj9lGYvI-Fpqe1DNkhubmE",
-    })
+  const unsplash = createApi({
+    accessKey: "T3_66syLWZsKMMOwHmHkoFj9lGYvI-Fpqe1DNkhubmE",
+  });
 
-    React.useEffect(() => {
-        async function getPhotos() {
-            const imageData = await unsplash.search.getPhotos({
-                query: "cat",
-                orientation: "portrait",
-                page: 1,
-                perPage: 10,
-            })
-            const images = await imageData.response;
-            setImages(images ?? null);
-            return
-        }
-        getPhotos();
-    }, [])
+  React.useEffect(() => {
+    async function getPhotos() {
+      const imageData = await unsplash.search.getPhotos({
+        query: "cat",
+        orientation: "portrait",
+        page: 1,
+        perPage: 10,
+      });
+      const images = await imageData.response;
+      setImages(images ?? null);
+      return;
+    }
+    getPhotos();
+  }, []);
 
-    return (
-        <Container>
-            <Bird style={{ width: "55px", height: "55px" }} />
-            {images && (
-                <StoriesRoot>
-                    <DirectionBtn direction="prev" />
-                    <FocusProvider barSize={images.results.length}>
-                        <StoriesContainer>
-                            <Content>
-                                <Articels data={images} />
-                            </Content>
-                            <ProgressBar barSize={images.results.length} />
-                        </StoriesContainer>
-                    </FocusProvider>
-                    <DirectionBtn direction="next" />
-                </StoriesRoot>
-            )}
-        </Container>
-    )
+  return (
+    <Container>
+      <Bird style={{ width: "55px", height: "55px" }} />
+      {images && (
+        <StoriesRoot>
+          <DirectionBtn direction="prev" />
+          <FocusProvider barSize={images.results.length}>
+            <StoriesContainer>
+              <Content>
+                <Articels data={images} />
+              </Content>
+              <ProgressBar barSize={images.results.length} />
+            </StoriesContainer>
+          </FocusProvider>
+          <DirectionBtn direction="next" />
+        </StoriesRoot>
+      )}
+    </Container>
+  );
 }

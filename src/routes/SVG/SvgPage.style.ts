@@ -62,10 +62,49 @@ export const Button = styled.button`
 `;
 
 export const Svg = styled.svg`
-  grid-area: button;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
-  z-index: 1000;
-  position: relative;
+  position: absolute;
+  bottom: 0;
 `;
+
+// function unreveal() {
+//   if (!isAnimating) return;
+//   toggleAnimating();
+
+//   gsap
+//     .timeline(overlayPath.current, {
+//       onComplete: () => toggleAnimating(),
+//     })
+//     .set(overlayPath.current, {
+//       attr: { d: paths.step2.unfilled },
+//     })
+//     .to(
+//       overlayPath.current,
+//       {
+//         duration: 0.8,
+//         ease: "power4.in",
+//         attr: { d: paths.step2.inBetween.curve2 },
+//       },
+//       0
+//     )
+//     .to(overlayPath.current, {
+//       duration: 0.2,
+//       ease: "power1",
+//       attr: { d: paths.step2.filled },
+//       onComplete: () => switchPage(),
+//     })
+//     // now reveal
+//     .set(overlayPath.current, {
+//       attr: { d: paths.step1.filled },
+//     })
+//     .to(overlayPath.current, {
+//       duration: 0.2,
+//       ease: "sine.in",
+//       attr: { d: paths.step1.inBetween.curve2 },
+//     })
+//     .to(overlayPath.current, {
+//       duration: 1,
+//       ease: "power4",
+//       attr: { d: paths.step1.unfilled },
+//     });
+// }

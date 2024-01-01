@@ -17,7 +17,11 @@ html,
 body,
 #root {
   font-family: "Watford";
+  width: 100%;
   height: 100%;
+
+  display: grid;
+  place-content: center;
 }
 
 body {
@@ -70,6 +74,10 @@ a {
   touch-action: manipulation;
 }
 
+a:visited {
+  color: none;
+}
+
 img,
 iframe {
   max-inline-size: 100%;
@@ -110,11 +118,6 @@ h1 {
 a {
   cursor: pointer;
   text-decoration: none;
-  color: var(--color-core-text);
-
-  &:visited {
-    color: var(--color-core-text);
-  }
 }
 
 :is(blockquote, dd, dl, figure, h1, h2, h3, h4, h5, h6, hr, p, pre) {

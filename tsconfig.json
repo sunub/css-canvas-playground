@@ -24,6 +24,7 @@
     "noFallthroughCasesInSwitch": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "paths": {
+      "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"]
     }

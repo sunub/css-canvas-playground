@@ -9,6 +9,7 @@ import Background from "./routes/Background";
 import Keyboard from "./routes/Keyboard";
 import FormPage from "./routes/FormPage";
 import SvgPage from "./routes/SVG/SvgPage";
+import Scroll from "./routes/Scroll";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/svg-page",
     element: <SvgPage />,
+  },
+  {
+    path: "/scroll-page",
+    element: <Scroll />,
   },
 ]);
 
