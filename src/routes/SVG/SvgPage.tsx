@@ -20,8 +20,7 @@ const paths = {
 };
 
 function SvgPage() {
-  const [isAnimating, toggleAnimating] = useToggle(false);
-  const [page, setPage] = React.useState<1 | 2>(1);
+  const [_, toggleAnimating] = useToggle(false);
   const overlayPath = React.useRef<SVGPathElement>(null);
 
   function animating() {
@@ -50,7 +49,7 @@ function SvgPage() {
   return (
     <Style.Body>
       <Style.Main>
-        <Style.StartView $page={page}>
+        <Style.StartView $page={1}>
           <Style.Button onClick={() => animating()}>Open</Style.Button>
         </Style.StartView>
         {/* 

@@ -10,12 +10,6 @@ const RootWrapper = styled.div`
   position: relative;
 `;
 
-const TitleWrapper = styled.div`
-  position: absolute;
-  top: 15px;
-  left: 15px;
-`;
-
 const ScrollWrapper = styled.ul`
   display: flex;
   flex-direction: row;

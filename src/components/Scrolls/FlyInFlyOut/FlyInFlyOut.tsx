@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { NAMES } from "@/constant/scroll";
-import { Link } from "react-router-dom";
 
 const ScrollItems = styled.ul`
   scroll-snap-align: center;
