@@ -5,6 +5,8 @@ import React from "react";
 import useToggle from "@hooks/use-toggle";
 import Form from "@components/Form";
 import FormHeader from "@components/FormHeader";
+import Device from "@/components/Device";
+import Loading from "@/components/Loading";
 
 const SELECT_ITMES = [
   "로그인 폼",
@@ -15,29 +17,26 @@ const SELECT_ITMES = [
 ];
 
 function FormPage() {
-  const [selectedValue, setSelectedValue] = React.useState<string>("");
-  const [isModalOpen, toggleIsModalOpen] = useToggle(false);
-
-  function handleSelect(value: string) {
-    setSelectedValue(() => value);
-
-    console.log(selectedValue);
-  }
-
   return (
     <Styled.FormWrapper>
-      <Select items={SELECT_ITMES} action={handleSelect} />
-      <div>
-        <Styled.Button onClick={toggleIsModalOpen}>Open Modal</Styled.Button>
-      </div>
-      {isModalOpen && (
-        <Modal isModalOpen={isModalOpen} handleDismiss={toggleIsModalOpen}>
-          <FormHeader />
-          <Form />
-        </Modal>
-      )}
+      <Device>
+        <Loading />
+      </Device>
     </Styled.FormWrapper>
   );
 }
 
 export default FormPage;
+
+{
+  /* <Select items={SELECT_ITMES} action={handleSelect} />
+<div>
+  <Styled.Button onClick={toggleIsModalOpen}>Open Modal</Styled.Button>
+</div>
+{isModalOpen && (
+  <Modal isModalOpen={isModalOpen} handleDismiss={toggleIsModalOpen}>
+    <FormHeader />
+    <Form />
+  </Modal>
+)} */
+}
