@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     element: <Stories />,
   },
   {
-    path: "/background",
+    path: "/rain",
     element: <Background />,
   },
   {

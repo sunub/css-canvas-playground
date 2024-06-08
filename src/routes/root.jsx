@@ -46,10 +46,10 @@ const LinkItem = styled(Link)`
 
 function App() {
   const Links = [
-    { href: "/tree", name: "Tree" },
-    { href: "/stories", name: "Stories" },
-    { href: "/background", name: "background" },
-    { href: "/keyboard", name: "keyboard" },
+    { href: "/tree", name: "tree" },
+    { href: "/stories", name: "stories" },
+    { href: "/rain", name: "rain" },
+    { href: "/keyboard", name: "virtual keyboard" },
     { href: "/form", name: "form" },
     { href: "/svg-page", name: "svgPage" },
   ];
